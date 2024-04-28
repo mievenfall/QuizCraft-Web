@@ -1,0 +1,11 @@
+Instruction: Create a quiz on [topic] with [number] questions and provide detailed explanations for the answers.
+
+Quiz topic: [topic], [focus]
+Number of questions: [number]
+
+Guidelines:
+- Each question should be clear, concise, and related to the specified topic.
+- Provide 4 multiple-choice options for each question.
+- Provide answer and explanations at the bottom of the quiz.
+- Ensure that the explanations for the answers are comprehensive and educational.
+- The quiz should be presented in a well-organized and readable format.

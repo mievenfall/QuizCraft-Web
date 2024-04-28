@@ -1,51 +1,45 @@
-// QuizContainer.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Question from './Question';
-import Result from './Result';
-import quizData from '../data/quizData';
+import processQuizData from './processQuizData';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import '../styles/QuizContainer.css';
 
 const QuizContainer = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(0);
+  const [quizData, setQuizData] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState({});
+  const { state } = useLocation();
+  const navigate = useNavigate();
 
-  const handleOptionSelect = (selectedOption) => {
-    // Check if the selected option is correct
-    const isCorrect = quizData[currentQuestion].answer === selectedOption;
-
-    // Update the score if the answer is correct
-    if (isCorrect) {
-      setScore(score + 1);
+  useEffect(() => {
+    if (state) {
+      const processedQuizData = processQuizData(state);
+      setQuizData(processedQuizData);
     }
+  }, [state]);
 
-    // Move to the next question
-    const nextQuestion = currentQuestion + 1;
-    if (nextQuestion < quizData.length) {
-      setCurrentQuestion(nextQuestion);
-    } else {
-      // If no more questions, show the result
-      setCurrentQuestion(nextQuestion);
-    }
+  const handleOptionSelect = (question, selectedOption) => {
+    setSelectedOptions((prevSelectedOptions) => ({
+      ...prevSelectedOptions,
+      [question]: selectedOption,
+    }));
   };
 
-  const resetQuiz = () => {
-    setCurrentQuestion(0);
-    setScore(0);
+  const handleSubmit = () => {
+    navigate('/result', { state: { quizData, selectedOptions } });
   };
 
   return (
     <div>
-      {currentQuestion < quizData.length ? (
+      {quizData.map((question, index) => (
         <Question
-          question={quizData[currentQuestion]}
+          key={index}
+          question={question}
+          selectedOption={selectedOptions[question.question]}
           handleOptionSelect={handleOptionSelect}
         />
-      ) : (
-        <Result
-          score={score}
-          totalQuestions={quizData.length}
-          resetQuiz={resetQuiz}
-        />
-      )}
+      ))}
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
 };

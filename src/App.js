@@ -1,13 +1,20 @@
-// App.js
 import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import QuizContainer from './components/QuizContainer';
+import ChatGPTDemo from './components/ChatGPTDemo';
+import Result from './components/Result';
+import './App.css';
 
 function App() {
   return (
-    <div>
-      <h1>Welcome to the Quiz App</h1>
-      <QuizContainer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+      <Route path="/" element={<Navigate to="/start"/>} />
+        <Route path="/start" element={<ChatGPTDemo />} />
+        <Route path="/quiz" element={<QuizContainer />} />
+        <Route path="/result" element={<Result />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

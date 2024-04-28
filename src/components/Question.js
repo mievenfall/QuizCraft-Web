@@ -1,15 +1,23 @@
 // Question.js
 import React from 'react';
-import Options from './Options';
 
 const Question = ({ question, handleOptionSelect }) => {
   return (
     <div>
-      <h2>{question.question}</h2>
-      <Options
-        options={question.options}
-        handleOptionSelect={handleOptionSelect}
-      />
+      <h3>{question.question}</h3>
+      {question.options.map((option, index) => (
+        <div key={index}>
+          <label>
+            <input
+              type="radio"
+              name={`question-${question.question}`}
+              value={option}
+              onChange={() => handleOptionSelect(question.question, option)}
+            />
+            {option}
+          </label>
+        </div>
+      ))}
     </div>
   );
 };

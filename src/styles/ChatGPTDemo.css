@@ -1,0 +1,24 @@
+.chat-gpt-demo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 100%;
+}
+
+.chat-gpt-demo-text-container {   
+    width: 100%;
+    height: 60%;
+    background-color: #b892ff;
+    border-radius: 10px;
+    margin-bottom: 1em;
+}
+
+.chat-gpt-demo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: right;
+    padding: 1em;
+}
