@@ -10,8 +10,8 @@
     const [response, setResponse] = useState('');
     const navigate = useNavigate();
 
-    let auth_key1 = "sk-VaIQu_KPbq3XH_whG8erq";
-    let auth_key2 = "wT3B_lbk_FJVXt_TBpL_6Di4_48O_PItzpc";
+    let auth_key1 = "sk-iCc_ysVfd_sAn5fk_5IXKQ_";
+    let auth_key2 = "mT3B_lbkFJ_Fiyiy2_b3ZAM_zv0NkD3_dZ";
 
     let auth_key = auth_key1.replaceAll("_", "") + auth_key2.replaceAll("_", "")
     
