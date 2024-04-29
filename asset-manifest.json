@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/QuizCraft-Web/static/css/main.7851cea0.css",
-    "main.js": "/QuizCraft-Web/static/js/main.b84515b8.js",
+    "main.js": "/QuizCraft-Web/static/js/main.68add52e.js",
     "static/js/453.6e4372d0.chunk.js": "/QuizCraft-Web/static/js/453.6e4372d0.chunk.js",
     "index.html": "/QuizCraft-Web/index.html",
     "main.7851cea0.css.map": "/QuizCraft-Web/static/css/main.7851cea0.css.map",
-    "main.b84515b8.js.map": "/QuizCraft-Web/static/js/main.b84515b8.js.map",
+    "main.68add52e.js.map": "/QuizCraft-Web/static/js/main.68add52e.js.map",
     "453.6e4372d0.chunk.js.map": "/QuizCraft-Web/static/js/453.6e4372d0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7851cea0.css",
-    "static/js/main.b84515b8.js"
+    "static/js/main.68add52e.js"
   ]
 }
