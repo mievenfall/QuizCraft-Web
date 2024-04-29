@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding-bottom: 3em;
   }
     
 .result-text-container {
@@ -14,7 +15,7 @@
     background-color: #b892ff;
     margin-bottom: 1em;
     max-width: 70em;
-    min-width: 20em;
+    min-width: 17em;
     font-size: 18px;
     width: 90%;
   }
