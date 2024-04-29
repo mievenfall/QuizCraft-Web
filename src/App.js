@@ -8,7 +8,7 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
+      <Routes basename="/QuizCraft-Web">
       <Route path="/" element={<Navigate to="/start"/>} />
         <Route path="/start" element={<ChatGPTDemo />} />
         <Route path="/quiz" element={<QuizContainer />} />
