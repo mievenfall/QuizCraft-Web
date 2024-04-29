@@ -2,6 +2,7 @@
   import axios from 'axios';
   import { useNavigate } from 'react-router-dom';
   import Slider from "./Slider"
+  import LoadingScreen from "./LoadingScreen"
 
   import "../styles/ChatGPTDemo.css"
 
@@ -10,6 +11,7 @@
     const [inputText2, setInputText2] = useState('');
     const [response, setResponse] = useState('');
     const [numOfQuestions, setNumOfQuestions] = useState(10);
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
     let auth_key1 = "sk-iCc_ysVfd_sAn5fk_5IXKQ_";
@@ -20,33 +22,40 @@
 
     const handleSubmit = async () => {
       try {
-      let body = "Quiz topic: " + inputText1 + ", " + inputText2 + ". Number of questions: " + numOfQuestions + ". Guidelines: - Each question should be clear, concise, and related to the specified topic. - Provide 4 multiple-choice options for each question. - Provide answer and explanations at the bottom of the quiz. - Ensure that the explanations for the answers are comprehensive and educational. - The quiz should strictly follow the format and do not create any additional new line.\n\"Quiz:\n\nQuestion1: *content here*\nOption1: *content here*\nOption2: *content here*\nOption3: *content here*\nOption4: *content here*\n\nQuestion2\nOption1\nOption2\nOption3\nOption4\n\nAnswer:\n\nQuestion1:Option*: *answer here*\nExplanation: *explain here*";
-      
-      const response = await axios.post(
-        'https://api.openai.com/v1/chat/completions',
-        {
-          model: 'gpt-3.5-turbo',
-          messages: [
-            { role: 'user', content: body }
-          ]
-        },
-        {
-          headers: {
-            'Authorization': 'Bearer ' + auth_key,
-            'Content-Type': 'application/json'
+        setIsLoading(true);
+        let body = "Quiz topic: " + inputText1 + ", " + inputText2 + ". Number of questions: " + numOfQuestions + ". Guidelines: - Each question should be clear, concise, and related to the specified topic. - Provide 4 multiple-choice options for each question. - Provide answer and explanations at the bottom of the quiz. - Ensure that the explanations for the answers are comprehensive and educational. - The quiz should strictly follow the format and do not create any additional new line.\n\"Quiz:\n\nQuestion1: *content here*\nOption1: *content here*\nOption2: *content here*\nOption3: *content here*\nOption4: *content here*\n\nQuestion2\nOption1\nOption2\nOption3\nOption4\n\nAnswer:\n\nQuestion1:Option*: *answer here*\nExplanation: *explain here*";
+        
+        const response = await axios.post(
+          'https://api.openai.com/v1/chat/completions',
+          {
+            model: 'gpt-3.5-turbo',
+            messages: [
+              { role: 'user', content: body }
+            ]
+          },
+          {
+            headers: {
+              'Authorization': 'Bearer ' + auth_key,
+              'Content-Type': 'application/json'
+            }
           }
-        }
-      );
+        );
       // console.log(response.data.choices[0].message.content);
-      setResponse(response.data.choices[0].message.content);
-      navigate('/quiz', { state: response.data.choices[0].message.content });
-    } catch (error) {
-      console.error('Error:', error);
-    }
+        setIsLoading(false);
+        setResponse(response.data.choices[0].message.content);
+        navigate('/quiz', { state: response.data.choices[0].message.content });
+      } catch (error) {
+        setIsLoading(false);
+        console.error('Error:', error);
+      }
   };
 
   return (
     <div class="chat-gpt-demo-container">
+      {isLoading ? (
+      <LoadingScreen />
+    ) : (
+      <>
       <h1>QuizCraft</h1>
       <div className="chat-gpt-demo-text-container">
         <div className="chat-gpt-demo-text">
@@ -80,6 +89,8 @@
         onClick={handleSubmit}
         disabled={!inputText1 || !inputText2}
       >Submit</button>
+      </>
+    )}
     </div>
   );
 };
