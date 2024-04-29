@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import '../styles/Result.css';
 
 const Result = () => {
   const { state } = useLocation();
@@ -17,11 +18,21 @@ const Result = () => {
   };
 
   const score = calculateScore();
+  const scorePercent = (score / quizData.length)*100;
 
   return (
-    <div>
-      <h2>Quiz Result</h2>
-      <p>Your score: {score} / {quizData.length}</p>
+    <div className="result-container">
+      <h2>YOUR RESULT</h2>
+      <h2 className="percent">{scorePercent}%</h2>
+      <p className="score">You got {score} out of {quizData.length} correct</p>
+      {quizData.map((question, index) => (
+        <div key={index} className="result-text-container">
+          <h3>{question.question}</h3>
+          <span>Your answer: {selectedOptions[question.question]}</span>
+          <br/>
+          <span className="answer">Correct answer: {question.answer}</span>
+        </div>
+      ))}
       <button onClick={() => navigate('/start')}>Back</button>
     </div>
   );

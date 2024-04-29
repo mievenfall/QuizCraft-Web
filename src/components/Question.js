@@ -1,14 +1,17 @@
 // Question.js
 import React from 'react';
 
+import "../styles/Question.css"
+
 const Question = ({ question, handleOptionSelect }) => {
   return (
-    <div>
+    <div className="question-container">
       <h3>{question.question}</h3>
       {question.options.map((option, index) => (
         <div key={index}>
           <label>
             <input
+              className="input-radio"
               type="radio"
               name={`question-${question.question}`}
               value={option}

@@ -30,17 +30,20 @@ const QuizContainer = () => {
   };
 
   return (
-    <div>
-      {quizData.map((question, index) => (
-        <Question
-          key={index}
-          question={question}
-          selectedOption={selectedOptions[question.question]}
-          handleOptionSelect={handleOptionSelect}
-        />
-      ))}
-      <button onClick={handleSubmit}>Submit</button>
+    <div className="quiz-container-container">
+      <div className="quiz-container-text-container">
+        {quizData.map((question, index) => (
+          <Question
+            key={index}
+            question={question}
+            selectedOption={selectedOptions[question.question]}
+            handleOptionSelect={handleOptionSelect}
+          />
+        ))}
+        <button onClick={handleSubmit}>Submit</button>
+      </div>
     </div>
+    
   );
 };
 

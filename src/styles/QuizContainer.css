@@ -1,20 +1,16 @@
 /* QuizContainer.css */
-.quiz-container {
-    background-color: #fff;
-    padding: 20px;
+.quiz-container-container {
     border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
-  .quiz-container h2 {
-    margin-top: 0;
-  }
-  
-  .quiz-container form {
+
+  .quiz-container-text-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
-  
-  .quiz-container label {
-    margin-bottom: 10px;
-  }
+ 

@@ -2,7 +2,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #333333;
-  color: #000000;
+  color: #3d3d3d;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,55 +13,64 @@ body {
 #root {
   margin: 0 auto;
   padding: 20px;
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  height: 90%;
 }
 
-h1, h2, h3 {
+h1 {
+  font-size: 70px;
   color: #ffffff;
+}
+
+h2 {
+  font-size: 40px;
+  color: #ffffff;
+  margin: 0.05em;
 }
 
 button {
   background-color: #b892ff;
-  color: #fff;
+  color: #3d3d3d;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
+  font-size: 18px;
   border-radius: 10px;
 }
 
-input {
-  border: 0;
-  outline: 0;
-  border-bottom: 1px solid #333;
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.input-text {
+	outline: none;
+	border:none;
+	border-bottom: 1px solid #3d3d3d;
+ 	box-shadow: none !important;
   background: transparent;
-
+  font-size: 18px;
+  width: 100%;
 }
 
-input:focus{
-  outline: none;
+
+.input-text:focus{
+  border-color: #ffffff;
+	border-width: medium medium 2px;
 }
 
-input::-webkit-input-placeholder {
-    padding-left: 5px;
-    font-size: 15px;
-    color: #3c3c3c;
+.floating-label {
+	position: absolute;
+	pointer-events: none;
+	top: 18px;
+	left: 10px;
+	transition: 0.2s ease all;
 }
 
-input:-moz-placeholder { /* Firefox 18- */
-    padding-left: 5px;
-    font-size: 15px;
-    color: #3c3c3c;
-}
-
-input::-moz-placeholder {  /* Firefox 19+ */
-    padding-left: 5px;
-    font-size: 15px;
-    color: #3c3c3c;
-}
-
-input:-ms-input-placeholder {
-    padding-left: 5px;
-    font-size: 15px;
-    color: #3c3c3c;
+.input-text:focus ~ .floating-label,
+.input-text:not(:focus):valid ~ .floating-label{
+	top: 0px;
+	left: 10px;
+	font-size: 13px;
+	opacity: 1;
 }

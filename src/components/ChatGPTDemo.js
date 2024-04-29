@@ -1,6 +1,7 @@
   import React, { useState } from 'react';
   import axios from 'axios';
   import { useNavigate } from 'react-router-dom';
+  import Slider from "./Slider"
 
   import "../styles/ChatGPTDemo.css"
 
@@ -8,6 +9,7 @@
     const [inputText1, setInputText1] = useState('');
     const [inputText2, setInputText2] = useState('');
     const [response, setResponse] = useState('');
+    const [numOfQuestions, setNumOfQuestions] = useState(10);
     const navigate = useNavigate();
 
     let auth_key1 = "sk-iCc_ysVfd_sAn5fk_5IXKQ_";
@@ -18,7 +20,7 @@
 
     const handleSubmit = async () => {
       try {
-      let body = "Quiz topic: " + inputText1 + ", " + inputText2 + ". Number of questions: 5. Guidelines: - Each question should be clear, concise, and related to the specified topic. - Provide 4 multiple-choice options for each question. - Provide answer and explanations at the bottom of the quiz. - Ensure that the explanations for the answers are comprehensive and educational. - The quiz should strictly follow the format and do not create any additional new line.\n\"Quiz:\n\nQuestion1: *content here*\nOption1: *content here*\nOption2: *content here*\nOption3: *content here*\nOption4: *content here*\n\nQuestion2\nOption1\nOption2\nOption3\nOption4\n\nAnswer:\n\nQuestion1:Option*: *answer here*\nExplanation: *explain here*";
+      let body = "Quiz topic: " + inputText1 + ", " + inputText2 + ". Number of questions: " + numOfQuestions + ". Guidelines: - Each question should be clear, concise, and related to the specified topic. - Provide 4 multiple-choice options for each question. - Provide answer and explanations at the bottom of the quiz. - Ensure that the explanations for the answers are comprehensive and educational. - The quiz should strictly follow the format and do not create any additional new line.\n\"Quiz:\n\nQuestion1: *content here*\nOption1: *content here*\nOption2: *content here*\nOption3: *content here*\nOption4: *content here*\n\nQuestion2\nOption1\nOption2\nOption3\nOption4\n\nAnswer:\n\nQuestion1:Option*: *answer here*\nExplanation: *explain here*";
       
       const response = await axios.post(
         'https://api.openai.com/v1/chat/completions',
@@ -46,27 +48,38 @@
   return (
     <div class="chat-gpt-demo-container">
       <h1>QuizCraft</h1>
-      <div class="chat-gpt-demo-text-container">
-        <div class="chat-gpt-demo-text">
-          <input 
+      <div className="chat-gpt-demo-text-container">
+        <div className="chat-gpt-demo-text">
+          <br/>
+          <input
+            className="input-text" 
             type="text" 
-            placeholder='What is your quiz about?'
             value={inputText1} 
             onChange={(e) => setInputText1(e.target.value)} 
+            required
           />
+          <span className="floating-label">What is your quiz about?</span>
         </div>
 
-        <div class="chat-gpt-demo-text">
+        <div className="chat-gpt-demo-text">
+          <br/>
           <input 
+            className="input-text" 
             type="text" 
-            placeholder='Detailed description?'
             value={inputText2} 
             onChange={(e) => setInputText2(e.target.value)} 
+            required
           />
+          <span className="floating-label">Detailed description?</span>
         </div>
+
+        <Slider MIN={5} MAX={15} UNIT={" questions"} sliderValue={numOfQuestions} setSliderValue={setNumOfQuestions} />
       </div>
       
-      <button onClick={handleSubmit}>Submit</button>
+      <button 
+        onClick={handleSubmit}
+        disabled={!inputText1 || !inputText2}
+      >Submit</button>
     </div>
   );
 };
