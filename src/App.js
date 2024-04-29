@@ -9,8 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes basename="/QuizCraft-Web">
-      <Route path="/" element={<Navigate to="/start"/>} />
-        <Route path="/start" element={<ChatGPTDemo />} />
+        <Route path="/" element={<ChatGPTDemo />} />
         <Route path="/quiz" element={<QuizContainer />} />
         <Route path="/result" element={<Result />} />
       </Routes>

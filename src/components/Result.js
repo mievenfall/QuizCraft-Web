@@ -33,7 +33,7 @@ const Result = () => {
           <span className="answer">Correct answer: {question.answer}</span>
         </div>
       ))}
-      <button onClick={() => navigate('/start')}>Back</button>
+      <button onClick={() => navigate('/')}>Back</button>
     </div>
   );
 };
