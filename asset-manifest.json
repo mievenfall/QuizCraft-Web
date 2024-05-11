@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.9d771d38.css",
-    "main.js": "/static/js/main.ab29a880.js",
-    "static/js/453.6e4372d0.chunk.js": "/static/js/453.6e4372d0.chunk.js",
-    "static/media/spinner.gif": "/static/media/spinner.44689bebb8ad48744fa4.gif",
-    "index.html": "/index.html",
-    "main.9d771d38.css.map": "/static/css/main.9d771d38.css.map",
-    "main.ab29a880.js.map": "/static/js/main.ab29a880.js.map",
-    "453.6e4372d0.chunk.js.map": "/static/js/453.6e4372d0.chunk.js.map"
+    "main.css": "/QuizCraft-Web/static/css/main.9d771d38.css",
+    "main.js": "/QuizCraft-Web/static/js/main.fd97a5a2.js",
+    "static/js/453.6e4372d0.chunk.js": "/QuizCraft-Web/static/js/453.6e4372d0.chunk.js",
+    "static/media/spinner.gif": "/QuizCraft-Web/static/media/spinner.44689bebb8ad48744fa4.gif",
+    "index.html": "/QuizCraft-Web/index.html",
+    "main.9d771d38.css.map": "/QuizCraft-Web/static/css/main.9d771d38.css.map",
+    "main.fd97a5a2.js.map": "/QuizCraft-Web/static/js/main.fd97a5a2.js.map",
+    "453.6e4372d0.chunk.js.map": "/QuizCraft-Web/static/js/453.6e4372d0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9d771d38.css",
-    "static/js/main.ab29a880.js"
+    "static/js/main.fd97a5a2.js"
   ]
 }
